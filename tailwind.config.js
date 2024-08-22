@@ -2,7 +2,13 @@
 module.exports = {
   content: ["**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        maize: "#EBE443",
+        night: "#151515",
+        folly: "#FD2962",
+      },
+    },
   },
   plugins: [],
 };

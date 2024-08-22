@@ -40,6 +40,12 @@
       "nome": "Nome do qrcode",
       "descricao": "Nome da descrição",
       "qrCode": "Nome do qrcode-Nome da descrição"
+    },
+    {
+      "id": "bb76",
+      "nome": "Nome do qrcode",
+      "descricao": "Nome da descrição",
+      "qrCode": "Nome do qrcode-Nome da descrição"
     }
   ]
 }

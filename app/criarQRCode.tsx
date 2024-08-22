@@ -30,7 +30,7 @@ export default function ScreenEspecificacoesQR() {
 
   return (
     <View>
-      <Text className="text-2xl">Especificações do QRCode</Text>
+      <Text className="text-2xl text-white">Especificações do QRCode</Text>
       <InputComCaption titulo="Nome" value={nome} onChangeText={setNome} />
 
       <InputComCaption
