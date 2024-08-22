@@ -1,4 +1,6 @@
 import InputComCaption from "@/components/InputComCaption";
+import { createQRCode } from "@/shared/service";
+import { ContextQRCodeCriado } from "@/store/context/context-qrcode-criado";
 import { Link } from "expo-router";
 import { useContext, useState } from "react";
 import {
@@ -8,13 +10,23 @@ import {
   Touchable,
   TouchableOpacity,
 } from "react-native";
-import { ContextQRCodeCriado } from "@/store/context/context-qrcode-criado";
 
 export default function ScreenEspecificacoesQR() {
+  const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
   const [nome, setNome] = useState("Nome do qrcode");
   const [descricao, setDescricao] = useState("Nome da descrição");
 
-  const { setValorQRCode } = useContext(ContextQRCodeCriado);
+  const handleCriarQRCode = () => {
+    const novoQRCode = {
+      nome: nome,
+      descricao: descricao,
+      qrCode: `${nome}-${descricao}`, // Você pode substituir isso por um valor gerado ou recebido
+    };
+
+    createQRCode(novoQRCode).then((resp) => {
+      setQRCodes((prev: any) => [...prev, resp]);
+    });
+  };
 
   return (
     <View>
@@ -27,7 +39,7 @@ export default function ScreenEspecificacoesQR() {
         onChangeText={setDescricao}
       />
       <Link href="/QRCodeCriado" asChild>
-        <TouchableOpacity onPress={() => setValorQRCode("teste veyr")}>
+        <TouchableOpacity onPress={handleCriarQRCode}>
           <Text>Criar</Text>
         </TouchableOpacity>
       </Link>
