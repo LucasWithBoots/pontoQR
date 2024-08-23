@@ -7,6 +7,8 @@ module.exports = {
         maize: "#EBE443",
         night: "#151515",
         folly: "#FD2962",
+        jet: "#2a2a2a",
+        "battleship-gray": "#666666",
       },
     },
   },

@@ -1,5 +1,9 @@
 import { Text, View } from "react-native";
 
+const options: Intl.DateTimeFormatOptions = { day: "numeric", month: "long" };
+const today = new Date();
+const formattedDate = today.toLocaleDateString("pt-BR", options);
+
 export default function Saudacao() {
   return (
     <View className="mb-7">
@@ -10,7 +14,7 @@ export default function Saudacao() {
         Olá, Lucas
       </Text>
       <Text className="text-white" style={{ fontFamily: "SpaceGrotesk-Light" }}>
-        21 de agosto
+        {formattedDate}
       </Text>
     </View>
   );

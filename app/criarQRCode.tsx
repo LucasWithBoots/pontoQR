@@ -13,8 +13,8 @@ import {
 
 export default function ScreenEspecificacoesQR() {
   const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
-  const [nome, setNome] = useState("Nome do qrcode");
-  const [descricao, setDescricao] = useState("Nome da descrição");
+  const [nome, setNome] = useState("");
+  const [descricao, setDescricao] = useState("");
 
   const handleCriarQRCode = () => {
     const novoQRCode = {
@@ -29,18 +29,37 @@ export default function ScreenEspecificacoesQR() {
   };
 
   return (
-    <View>
-      <Text className="text-2xl text-white">Especificações do QRCode</Text>
-      <InputComCaption titulo="Nome" value={nome} onChangeText={setNome} />
+    <View className="mx-5 mt-16">
+      <Text
+        className="text-2xl text-white mb-7"
+        style={{ fontFamily: "SpaceGrotesk-Bold" }}
+      >
+        Especificações do QR Code
+      </Text>
+      <InputComCaption
+        titulo="Nome"
+        placeholder="PlaceHolder N"
+        value={nome}
+        onChangeText={setNome}
+      />
 
       <InputComCaption
         titulo="Descrição"
         value={descricao}
         onChangeText={setDescricao}
+        placeholder="PlaceHolder D"
       />
       <Link href="/QRCodeCriado" asChild>
-        <TouchableOpacity onPress={handleCriarQRCode}>
-          <Text>Criar</Text>
+        <TouchableOpacity
+          onPress={handleCriarQRCode}
+          className="bg-folly self-start px-5 py-3 rounded-full"
+        >
+          <Text
+            className="color-white"
+            style={{ fontFamily: "SpaceGrotesk-Bold" }}
+          >
+            Criar
+          </Text>
         </TouchableOpacity>
       </Link>
     </View>
