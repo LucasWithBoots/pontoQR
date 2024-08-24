@@ -1,33 +1,28 @@
 import InputComCaption from "@/components/InputComCaption";
+import { QRCodeModel, QRCodeModelDAO } from "@/models/model.qrcode";
 import { createQRCode } from "@/shared/service";
 import { ContextQRCodeCriado } from "@/store/context/context-qrcode-criado";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { useContext, useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Touchable,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 
 export default function ScreenEspecificacoesQR() {
-  const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [erro, setErro] = useState<string | null>("");
+  const { setQRCodes } = useContext(ContextQRCodeCriado);
+  const [nome, setNome] = useState<string>("");
+  const [descricao, setDescricao] = useState<string>("");
+  const [erro, setErro] = useState<string | null>();
 
   const handleCriarQRCode = () => {
     if (nome.trim() && descricao.trim()) {
       setErro(null);
-      const novoQRCode = {
+      const novoQRCode: QRCodeModelDAO = {
         nome: nome,
         descricao: descricao,
         qrCode: `${nome}-${descricao}`, // Você pode substituir isso por um valor gerado ou recebido
       };
 
       createQRCode(novoQRCode).then((resp) => {
-        setQRCodes((prev: any) => [...prev, resp]);
+        setQRCodes((prev: QRCodeModel[]) => [...prev, resp]);
       });
 
       router.navigate("/QRCodeCriado");

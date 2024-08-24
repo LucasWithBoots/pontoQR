@@ -1,10 +1,11 @@
 import BotaoCriarQR from "@/components/BotaoCriarQR";
 import CaixaInformacaoDadosQRCode from "@/components/CaixaInformacaoDadosQRCode";
 import Saudacao from "@/components/Saudacao";
+import { QRCodeModel } from "@/models/model.qrcode";
 import { getQRCodes } from "@/shared/service";
 import { ContextQRCodeCriado } from "@/store/context/context-qrcode-criado";
-import { useContext, useEffect, useState } from "react";
-import { FlatList, StatusBar, Text, View } from "react-native";
+import { useContext, useEffect } from "react";
+import { FlatList, StatusBar, View } from "react-native";
 
 export default function Index() {
   const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
@@ -13,7 +14,7 @@ export default function Index() {
     getQRCodes().then((resp) => setQRCodes(resp));
   }, []);
 
-  const renderQRCode = ({ item }: any) => (
+  const renderQRCode = ({ item }: { item: QRCodeModel }) => (
     <CaixaInformacaoDadosQRCode
       nome={item.nome}
       descricao={item.descricao}

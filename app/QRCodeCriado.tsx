@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 
 export default function QRCodeCriado() {
-  const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
+  const { qrCodes } = useContext(ContextQRCodeCriado);
   const ultimoQRCode = qrCodes[qrCodes.length - 1];
 
   return (
