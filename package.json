@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "json-serve": "npx json-server db.json"
+    "json-server": "npx json-server db.json"
   },
   "jest": {
     "preset": "jest-expo"

@@ -11,3 +11,23 @@ PontoQR é uma aplicação mobile desenvolvida com o objetivo de gerar e visuali
 - Criação de QR Codes: Interface intuitiva para criar QR Codes personalizados com informações específicas.
 - Visualização de QR Codes Criados: Após a criação, visualize o QR Code diretamente na aplicação.
 - Persistência de Dados: Utiliza o Context API para gerenciar o estado do QR Code criado.
+
+## Instalação
+
+1. Clone o repositório
+2. Instale as dependências
+
+   ```bat
+   npm install
+   ```
+
+3. Execute o Json Server
+
+   ```bat
+   npm run json-server
+   ```
+
+4. Execute o projeto
+   ```bat
+   npm run start
+   ```
