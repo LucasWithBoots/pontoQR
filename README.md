@@ -1,3 +1,5 @@
 # pontoQR
 
-![alt text](assets/images/exemploTela.png)
+![Minhas habilidades](https://skillicons.dev/icons?i=ts,react,tailwind)
+
+![alt text](assets/images/animacaoTela.gif)

@@ -5,7 +5,6 @@ import { getQRCodes } from "@/shared/service";
 import { ContextQRCodeCriado } from "@/store/context/context-qrcode-criado";
 import { useContext, useEffect, useState } from "react";
 import { FlatList, StatusBar, Text, View } from "react-native";
-import QRCode from "react-native-qrcode-svg";
 
 export default function Index() {
   const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
@@ -24,6 +23,7 @@ export default function Index() {
 
   return (
     <>
+      <StatusBar barStyle={"light-content"} />
       <View className="flex-1 mx-5 mt-16">
         <Saudacao />
         <BotaoCriarQR />

@@ -4,7 +4,7 @@ import { TouchableOpacity, Text, View } from "react-native";
 export default function BotaoCriarQR() {
   return (
     <Link href="/criarQRCode" asChild>
-      <TouchableOpacity className="h-20 rounded-lg justify-center pl-6 bg-maize">
+      <TouchableOpacity className="h-20 rounded-lg justify-center pl-6 bg-maize mb-7">
         <View>
           <Text
             className="text-black text-lg"

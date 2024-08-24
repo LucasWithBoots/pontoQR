@@ -18,7 +18,7 @@ export default function ScreenEspecificacoesQR() {
   const [erro, setErro] = useState<string | null>("");
 
   const handleCriarQRCode = () => {
-    if (nome && descricao) {
+    if (nome.trim() && descricao.trim()) {
       setErro(null);
       const novoQRCode = {
         nome: nome,
@@ -46,7 +46,7 @@ export default function ScreenEspecificacoesQR() {
       </Text>
       <InputComCaption
         titulo="Nome"
-        placeholder="PlaceHolder N"
+        placeholder="Nome do QR Code"
         value={nome}
         onChangeText={setNome}
       />
@@ -55,7 +55,7 @@ export default function ScreenEspecificacoesQR() {
         titulo="Descrição"
         value={descricao}
         onChangeText={setDescricao}
-        placeholder="PlaceHolder D"
+        placeholder="Descrição do QR Code"
       />
 
       {erro ? <Text className="text-folly mb-5">{erro}</Text> : null}
