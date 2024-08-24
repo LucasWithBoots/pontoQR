@@ -5,24 +5,6 @@
       "nome": "Nome 1",
       "descricao": "Descrição 1",
       "qrCode": "Código QR 5844"
-    },
-    {
-      "id": "c49f",
-      "nome": "teste",
-      "descricao": "1234",
-      "qrCode": "teste-1234"
-    },
-    {
-      "id": "b2ab",
-      "nome": "teste",
-      "descricao": "kkkkkk",
-      "qrCode": "teste-kkkkkk"
-    },
-    {
-      "id": "b374",
-      "nome": "teste",
-      "descricao": "aaaaa",
-      "qrCode": "teste-aaaaa"
     }
   ]
 }
