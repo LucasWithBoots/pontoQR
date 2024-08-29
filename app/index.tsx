@@ -6,6 +6,7 @@ import { getQRCodes } from "@/shared/service";
 import { ContextQRCodeCriado } from "@/store/context/context-qrcode-criado";
 import { useContext, useEffect } from "react";
 import { FlatList, StatusBar, View } from "react-native";
+import SelecionarModalidade from "./selecionarModalidade";
 
 export default function Index() {
   const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
@@ -26,8 +27,9 @@ export default function Index() {
     <>
       <StatusBar barStyle={"light-content"} />
       <View className="flex-1 mx-5 mt-16">
+        <SelecionarModalidade />
         <Saudacao />
-        <BotaoCriarQR />
+        <BotaoCriarQR text={"Criar QRCode"} />
         <FlatList
           data={qrCodes}
           keyExtractor={(item) => item.id}

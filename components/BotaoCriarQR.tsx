@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { TouchableOpacity, Text, View } from "react-native";
 
-export default function BotaoCriarQR() {
+export default function BotaoCriarQR({ text }: { text: string }) {
   return (
     <Link href="/criarQRCode" asChild>
       <TouchableOpacity className="h-20 rounded-lg justify-center pl-6 bg-maize mb-7">
@@ -10,7 +10,7 @@ export default function BotaoCriarQR() {
             className="text-black text-lg"
             style={{ fontFamily: "SpaceGrotesk-Bold" }}
           >
-            Criar QRCode
+            {text}
           </Text>
         </View>
       </TouchableOpacity>
