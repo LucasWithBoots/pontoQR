@@ -4,13 +4,21 @@
       "id": "1",
       "nome": "Nome 1",
       "descricao": "Descrição 1",
-      "qrCode": "Código QR 5844"
+      "qrCode": "Código QR 5844",
+      "vezesEscanedado": 0
     },
     {
-      "id": "bcbc",
+      "id": "2",
+      "nome": "Nome 2",
+      "descricao": "Descrição 2",
+      "qrCode": "DASDASDSASAD",
+      "vezesEscanedado": 0
+    },
+    {
+      "id": "faab",
       "nome": "teste",
-      "descricao": "teste",
-      "qrCode": "teste-teste"
+      "descricao": "aaaaaaa",
+      "qrCode": "teste-aaaaaaa"
     }
   ]
 }

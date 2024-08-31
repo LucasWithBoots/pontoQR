@@ -13,15 +13,6 @@ export default function Index() {
   const { qrCodes, setQRCodes } = useContext(ContextQRCodeCriado);
   const { usuario, setUsuario } = useContext(ContextUsuario);
 
-  // Nome padrão se não existir usuario?.nome
-  useEffect(() => {
-    if (!usuario?.nome) {
-      setUsuario({ nome: "Fulano" });
-    }
-  });
-
-  const funcao = usuario?.funcao;
-
   useEffect(() => {
     getQRCodes().then((resp) => setQRCodes(resp));
   }, []);
@@ -38,7 +29,7 @@ export default function Index() {
     <>
       <StatusBar barStyle={"light-content"} />
       <SelecionarModalidade />
-      {funcao === "criador" ? (
+      {usuario?.funcao === "criador" ? (
         <View className="flex-1 mx-5 mt-16">
           <Saudacao />
           <BotaoCriarQR text={"Criar QRCode"} href="/criarQRCode" />

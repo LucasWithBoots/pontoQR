@@ -1,21 +1,22 @@
 import { QRCodeModelDAO } from "@/models/model.qrcode";
 
-const LOCAL_IP = "192.168.36.152";
+import axios from "axios";
 
-export const getQRCodes = () => {
-  return fetch(`http://${LOCAL_IP}:3000/qrCodes`)
-    .then((resp) => resp.json())
-    .catch((error) => console.error(error));
-};
+export async function getQRCodes() {
+  try {
+    const response = await axios.get("http://10.0.2.2:3000/qrCodes");
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-export const createQRCode = (novoQRCode: QRCodeModelDAO) => {
-  return fetch(`http://${LOCAL_IP}:3000/qrCodes`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(novoQRCode),
-  })
-    .then((resp) => resp.json())
-    .catch((error) => console.error(error));
-};
+export async function createQRCode(novoQRCode: QRCodeModelDAO) {
+  try {
+    const postMethod = axios.post("http://10.0.2.2:3000/qrCodes", novoQRCode);
+    console.log((await postMethod).data);
+    return (await postMethod).data;
+  } catch (error) {
+    console.error(error);
+  }
+}

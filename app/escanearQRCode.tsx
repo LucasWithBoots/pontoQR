@@ -1,3 +1,4 @@
+import { adicionarEscaneamento } from "@/shared/service";
 import {
   BarcodeScanningResult,
   CameraType,
@@ -37,7 +38,9 @@ export default function ScreenEscanearQRCode() {
     setScannedData(data.data);
   }
 
-  function confirmarEscaneamento() {}
+  function confirmarEscaneamento() {
+    adicionarEscaneamento("DASDASDSASAD");
+  }
 
   function cancelarEscaneamento() {
     setScannedData("");

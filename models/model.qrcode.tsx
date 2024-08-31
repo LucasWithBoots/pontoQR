@@ -3,6 +3,7 @@ export interface QRCodeModel {
   nome: string;
   descricao: string;
   qrCode: string;
+  vezesEscanedado: number;
 }
 
 export interface QRCodeModelDAO {

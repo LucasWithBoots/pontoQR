@@ -1,7 +1,7 @@
 import BotaoCriarQR from "@/components/BotaoCriarQR";
 import InputComCaption from "@/components/InputComCaption";
 import { ContextUsuario } from "@/store/context/context-usuario";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Modal, TouchableOpacity } from "react-native";
 
 export default function SelecionarModalidade() {
