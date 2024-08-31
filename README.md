@@ -4,7 +4,7 @@
 
 PontoQR é uma aplicação mobile desenvolvida com o objetivo de gerar e visualizar QR Codes personalizados.
 
-![alt text](assets/images/animacaoTela.gif)
+https://github.com/user-attachments/assets/777204ca-b129-4ff3-ae9d-c3965941636a
 
 ## Funcionalidades
 
