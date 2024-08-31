@@ -10,4 +10,5 @@ export interface QRCodeModelDAO {
   nome: string;
   descricao: string;
   qrCode: string;
+  vezesEscanedado: number;
 }

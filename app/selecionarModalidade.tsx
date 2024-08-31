@@ -24,7 +24,7 @@ export default function SelecionarModalidade() {
 
   return (
     <Modal visible={modalVisible}>
-      <View className="flex-1 bg-black">
+      <View className="flex-1 bg-black px-5 pt-8">
         <Text
           className="text-2xl text-white"
           style={{ fontFamily: "SpaceGrotesk-Bold" }}
@@ -32,7 +32,7 @@ export default function SelecionarModalidade() {
           Bem vindo(a)!
         </Text>
         <Text
-          className="text-white"
+          className="text-white mb-10"
           style={{ fontFamily: "SpaceGrotesk-Light" }}
         >
           Complete os seguintes campos para prosseguir:
@@ -45,28 +45,30 @@ export default function SelecionarModalidade() {
           onChangeText={setNome}
         />
 
-        <TouchableOpacity
-          className="bg-folly self-start px-5 py-3 rounded-full"
-          onPress={handlePressEscaneader}
-        >
-          <Text
-            className="color-white"
-            style={{ fontFamily: "SpaceGrotesk-Bold" }}
+        <View className="flex-row justify-between">
+          <TouchableOpacity
+            className="bg-folly self-start px-5 py-3 rounded-full"
+            onPress={handlePressEscaneader}
           >
-            Sou um escaneador
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="bg-folly self-start px-5 py-3 rounded-full"
-          onPress={handlePressCriador}
-        >
-          <Text
-            className="color-white"
-            style={{ fontFamily: "SpaceGrotesk-Bold" }}
+            <Text
+              className="color-white"
+              style={{ fontFamily: "SpaceGrotesk-Bold" }}
+            >
+              Sou um escaneador
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className="bg-folly self-start px-5 py-3 rounded-full"
+            onPress={handlePressCriador}
           >
-            Sou um criador
-          </Text>
-        </TouchableOpacity>
+            <Text
+              className="color-white"
+              style={{ fontFamily: "SpaceGrotesk-Bold" }}
+            >
+              Sou um criador
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </Modal>
   );

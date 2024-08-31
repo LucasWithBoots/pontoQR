@@ -22,6 +22,7 @@ export default function Index() {
       nome={item.nome}
       descricao={item.descricao}
       qrCode={item.qrCode}
+      vezesEscanedado={item.vezesEscanedado}
     />
   );
 
