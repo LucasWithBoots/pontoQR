@@ -1,4 +1,4 @@
-import { addScan } from "@/shared/service";
+import { addScan, getQRCodeByTextoEscaneador } from "@/shared/service";
 import {
   BarcodeScanningResult,
   CameraType,
@@ -35,11 +35,15 @@ export default function ScreenEscanearQRCode() {
     setFacing((current) => (current === "back" ? "front" : "back"));
   }
 
-  function handleScanned(data: BarcodeScanningResult) {
-    setScannedData(data.data);
+  async function handleScanned(data: BarcodeScanningResult) {
+    const isQRCodeValid = await getQRCodeByTextoEscaneador(data.data); // Aguarda a verificação
+
+    if (isQRCodeValid) {
+      setScannedData(data.data);
+    }
   }
 
-  function confirmarEscaneamento() {
+  async function confirmarEscaneamento() {
     addScan(scannedData as string);
     router.back();
   }

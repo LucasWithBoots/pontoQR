@@ -11,6 +11,19 @@ export async function getQRCodes() {
   }
 }
 
+export async function getQRCodeByTextoEscaneador(codigoQrEscaneado: string) {
+  try {
+    const { data } = await axios.get<QRCodeModel[]>(
+      `http://10.0.2.2:3000/qrCodes?qrCode=${codigoQrEscaneado}`,
+    );
+
+    return data.length > 0;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 export async function createQRCode(novoQRCode: QRCodeModelDAO) {
   try {
     const postMethod = axios.post("http://10.0.2.2:3000/qrCodes", novoQRCode);
