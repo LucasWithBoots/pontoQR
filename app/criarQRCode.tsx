@@ -18,7 +18,8 @@ export default function ScreenEspecificacoesQR() {
       const novoQRCode: QRCodeModelDAO = {
         nome: nome,
         descricao: descricao,
-        qrCode: `${nome}-${descricao}`, // Você pode substituir isso por um valor gerado ou recebido
+        qrCode: `${nome}-${descricao}`,
+        vezesEscanedado: 0,
       };
 
       createQRCode(novoQRCode).then((resp) => {

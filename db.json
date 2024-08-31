@@ -4,7 +4,15 @@
       "id": "1",
       "nome": "Nome 1",
       "descricao": "Descrição 1",
-      "qrCode": "Código QR 5844"
+      "qrCode": "Código QR 5844",
+      "vezesEscanedado": 6
+    },
+    {
+      "id": "66e7",
+      "nome": "teste novo",
+      "descricao": "dasdsadsad",
+      "qrCode": "teste novo-dasdsadsad",
+      "vezesEscanedado": 0
     }
   ]
 }

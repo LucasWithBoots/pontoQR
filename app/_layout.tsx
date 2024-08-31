@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import ContextUsuarioProvider from "@/store/context/context-usuario";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,14 +28,16 @@ export default function RootLayout() {
 
   return (
     <ContextQRCodeCriadoProvider>
-      <Stack
-        screenOptions={{
-          contentStyle: { backgroundColor: "black" },
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="index" />
-      </Stack>
+      <ContextUsuarioProvider>
+        <Stack
+          screenOptions={{
+            contentStyle: { backgroundColor: "black" },
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="index" />
+        </Stack>
+      </ContextUsuarioProvider>
     </ContextQRCodeCriadoProvider>
   );
 }
