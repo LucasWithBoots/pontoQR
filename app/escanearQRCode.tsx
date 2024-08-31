@@ -1,10 +1,11 @@
-import { adicionarEscaneamento } from "@/shared/service";
+import { addScan } from "@/shared/service";
 import {
   BarcodeScanningResult,
   CameraType,
   CameraView,
   useCameraPermissions,
 } from "expo-camera";
+import { router } from "expo-router";
 import { useState } from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 
@@ -39,7 +40,8 @@ export default function ScreenEscanearQRCode() {
   }
 
   function confirmarEscaneamento() {
-    adicionarEscaneamento("DASDASDSASAD");
+    addScan(scannedData as string);
+    router.back();
   }
 
   function cancelarEscaneamento() {

@@ -5,14 +5,14 @@
       "nome": "Nome 1",
       "descricao": "Descrição 1",
       "qrCode": "Código QR 5844",
-      "vezesEscanedado": 0
+      "vezesEscanedado": 6
     },
     {
       "id": "2",
       "nome": "Nome 2",
       "descricao": "Descrição 2",
       "qrCode": "DASDASDSASAD",
-      "vezesEscanedado": 0
+      "vezesEscanedado": 4
     },
     {
       "id": "faab",
