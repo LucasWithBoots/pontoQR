@@ -1,4 +1,4 @@
-package io.github.lucaswithboots
+package io.github.lucaswithboots.plugins
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*

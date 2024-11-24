@@ -1,5 +1,6 @@
 package io.github.lucaswithboots
 
+import io.github.lucaswithboots.plugins.configureRouting
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
