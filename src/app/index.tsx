@@ -1,7 +1,27 @@
-import {Text, View} from "react-native";
+import {View} from "react-native";
 import "@/src/style/global.css"
+import {Link, SplashScreen} from "expo-router";
+import React, {useEffect} from "react";
+import {useFonts} from "expo-font";
 
 export default function Index() {
+    const [loaded, error] = useFonts({
+        'SpaceGrotesk-Bold': require('@/assets/fonts/SpaceGrotesk-Bold.otf'),
+        'SpaceGrotesk-Light': require('@/assets/fonts/SpaceGrotesk-Light.otf'),
+        'SpaceGrotesk-Medium': require('@/assets/fonts/SpaceGrotesk-Medium.otf'),
+        'SpaceGrotesk-Regular': require('@/assets/fonts/SpaceGrotesk-Regular.otf'),
+    });
+
+    useEffect(() => {
+        if (loaded || error) {
+            SplashScreen.hideAsync();
+        }
+    }, [loaded, error]);
+
+    if (!loaded && !error) {
+        return null;
+    }
+
     return (
         <View
             style={{
@@ -10,7 +30,7 @@ export default function Index() {
                 alignItems: "center",
             }}
         >
-            <Text className="text-3xl">Edit app/index.tsx to edit this screen.</Text>
+            <Link className="text-white" href="/screens/start">teste</Link>
         </View>
     );
 }
