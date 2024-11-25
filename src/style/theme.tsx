@@ -6,7 +6,8 @@ export const Colors = {
     mauve: "#B892FF",
     congress_blue: "#003F88",
     firefly: "#0D1F2D",
-    shark: "#181B22"
+    shark: "#181B22",
+    vulcan: "#131521"
 };
 
 export const Fonts = {
