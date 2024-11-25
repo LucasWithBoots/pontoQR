@@ -8,7 +8,12 @@ module.exports = {
             colors: {
                 blue_ribbon: "#1A5DF4",
                 ebony: "#121631",
-                mirage: "#181C23"
+                mirage: "#181C23",
+                eletric_violet: "#6E44FF",
+                mauve: "#B892FF",
+                congress_blue: "#003F88",
+                firefly: "#0D1F2D"
+
             }
         }
     },

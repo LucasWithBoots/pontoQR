@@ -3,6 +3,7 @@ import "@/src/style/global.css"
 import {Link, SplashScreen} from "expo-router";
 import React, {useEffect} from "react";
 import {useFonts} from "expo-font";
+import {StatusBar} from "expo-status-bar";
 
 export default function Index() {
     const [loaded, error] = useFonts({
@@ -23,14 +24,18 @@ export default function Index() {
     }
 
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <Link className="text-white" href="/screens/start">teste</Link>
-        </View>
+        <>
+            <StatusBar backgroundColor="transparent" translucent={true}/>
+            <View
+                style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}
+            >
+                <Link className="text-white" href="/screens/start">teste</Link>
+                <Link className="text-white" href="/screens/home">home</Link>
+            </View>
+        </>
     );
 }

@@ -1,18 +1,20 @@
 package io.github.lucaswithboots.plugins
 
+import io.github.lucaswithboots.repositories.user.PostgresUserRepository
+import io.github.lucaswithboots.routes.userRoute
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Application.configureSerialization() {
+fun Application.configureSerialization(
+    userRepository: PostgresUserRepository
+) {
     install(ContentNegotiation) {
         json()
     }
     routing {
-        get("/json/kotlinx-serialization") {
-                call.respond(mapOf("hello" to "world"))
-            }
+        userRoute(userRepository)
     }
 }

@@ -4,12 +4,11 @@ import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
-import java.time.LocalDateTime
 
 @Serializable
 data class User (
     val id: Int,
-    val team: Team?,
+    val id_team: Int? = null,
     val name: String,
     val email: String,
     val password: String,

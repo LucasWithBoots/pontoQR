@@ -12,7 +12,7 @@ export default function LoginScreen() {
                 <TextInputForms title="Email" placeholder="Your email"></TextInputForms>
                 <TextInputForms title="Password" placeholder="Your password" isSecure={true}></TextInputForms>
             </View>
-            <MainButtonForms text={"Login"} href={"./signup"}/>
+            <MainButtonForms text={"Login"} href={"./home"}/>
         </View>
     )
 }
