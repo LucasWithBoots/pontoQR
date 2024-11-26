@@ -10,7 +10,7 @@ object UserTable: IntIdTable("user"){
     val name = varchar("name", 255)
     val email = varchar("email", 255)
     val password = varchar("password", 255)
-    val is_creator = bool("is_creator")
+    val isBoss = bool("isBoss")
     val date_created = datetime("date_created")
     val active = bool("active")
 }
@@ -21,7 +21,7 @@ fun mapRowToModel(row: ResultRow) = User(
     name = row[UserTable.name],
     email = row[UserTable.email],
     password = row[UserTable.password],
-    is_creator = row[UserTable.is_creator],
+    isBoss = row[UserTable.isBoss],
     date_created = row[UserTable.date_created],
     active = row[UserTable.active]
 )

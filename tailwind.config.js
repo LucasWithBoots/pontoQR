@@ -12,10 +12,9 @@ module.exports = {
                 eletric_violet: "#6E44FF",
                 mauve: "#B892FF",
                 congress_blue: "#003F88",
-                firefly: "#0D1F2D"
-
-            }
-        }
+                firefly: "#0D1F2D",
+            },
+        },
     },
     plugins: [],
-}
+};

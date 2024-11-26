@@ -4,6 +4,7 @@ import com.example.mapping.UserTable
 import com.example.mapping.mapRowToModel
 import com.example.model.User
 import io.github.lucaswithboots.plugins.suspendTransaction
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
 class PostgresUserRepository: UserRepository {
@@ -15,8 +16,16 @@ class PostgresUserRepository: UserRepository {
         TODO("Not yet implemented")
     }
 
-    override suspend fun addUser(user: User) {
-        TODO("Not yet implemented")
+    override suspend fun addUser(user: User): Unit = suspendTransaction{
+        UserTable.insert {
+            it[id_team] = user.id_team
+            it[name] = user.name
+            it[email] = user.email
+            it[password] = user.password
+            it[isBoss] = user.isBoss
+            it[date_created] = user.date_created
+            it[active] = user.active
+        }
     }
 
     override suspend fun updateUserById(id: Int, user: User) {
