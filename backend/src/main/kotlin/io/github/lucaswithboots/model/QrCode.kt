@@ -8,8 +8,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class QrCode(
     val id: Int,
-    val creator: User,
-    val team: Team,
+    val id_creator: Int,
+    val id_team: Int,
     val title: String,
     val description: String,
     val date_created: kotlinx.datetime.LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),

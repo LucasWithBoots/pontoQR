@@ -7,8 +7,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Team(
-    val id: Int,
+    val id: Int? = null,
     val name: String,
-    val date: kotlinx.datetime.LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
-    val active: Boolean
+    val date_created: kotlinx.datetime.LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()),
+    val active: Boolean = true
 )

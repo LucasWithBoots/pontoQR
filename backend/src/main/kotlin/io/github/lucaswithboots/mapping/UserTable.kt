@@ -15,7 +15,7 @@ object UserTable: IntIdTable("user"){
     val active = bool("active")
 }
 
-fun mapRowToModel(row: ResultRow) = User(
+fun mapRowToUser(row: ResultRow) = User(
     id = row[UserTable.id].value,
     id_team = row[UserTable.id_team]?.value,
     name = row[UserTable.name],

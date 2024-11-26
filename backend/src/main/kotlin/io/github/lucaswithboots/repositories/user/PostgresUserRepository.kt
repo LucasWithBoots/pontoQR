@@ -1,16 +1,15 @@
 package io.github.lucaswithboots.repositories.user
 
 import com.example.mapping.UserTable
-import com.example.mapping.mapRowToModel
+import com.example.mapping.mapRowToUser
 import com.example.model.User
 import io.github.lucaswithboots.plugins.suspendTransaction
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
 class PostgresUserRepository: UserRepository {
     override suspend fun allUsers(): List<User> = suspendTransaction {
-        UserTable.selectAll().map(::mapRowToModel)
+        UserTable.selectAll().map(::mapRowToUser)
     }
 
     override suspend fun userById(id: Int): User? {
@@ -40,7 +39,7 @@ class PostgresUserRepository: UserRepository {
     override suspend fun userByEmail(email: String): User? = suspendTransaction{
        UserTable.selectAll()
            .where { UserTable.email eq email }
-           .map(::mapRowToModel)
+           .map(::mapRowToUser)
            .singleOrNull()
     }
 }

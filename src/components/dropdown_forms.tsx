@@ -1,26 +1,17 @@
 import { useState } from "react";
-import {
-    TouchableOpacity,
-    View,
-    Text,
-    StyleSheet,
-    FlatList,
-} from "react-native";
+import { TouchableOpacity, View, Text, FlatList } from "react-native";
 
 export default function DropdownForms({
     title,
     placeholder,
     items,
+    onSelect,
 }: {
     title: string;
     placeholder: string;
     items: Array<{ label: string; value: string }>;
+    onSelect: (value: string) => void;
 }) {
-    items = [
-        { label: "Option 1", value: "1" },
-        { label: "Option 2", value: "2" },
-        { label: "Option 3", value: "3" },
-    ];
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<{
         label: string;
@@ -32,6 +23,7 @@ export default function DropdownForms({
     const handleItemPress = (item: any) => {
         setSelectedItem(item);
         setIsOpen(false);
+        onSelect(item.value);
     };
 
     return (
