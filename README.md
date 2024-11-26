@@ -1,33 +1,8 @@
-# pontoQR
 
-![Minhas habilidades](https://skillicons.dev/icons?i=ts,react,tailwind)
+![Frame 27](https://github.com/user-attachments/assets/25619d0b-f474-4d4e-b79a-a1a1546e1834)
 
-PontoQR é uma aplicação mobile desenvolvida com o objetivo de gerar e visualizar QR Codes personalizados.
+> 📘 Info
+>
+> The new version of this application is currently under development. It will feature a redesigned interface, backend integration (built with Kotlin and Ktor), authentication, and more. To access the previous version, please visit the "old-project" branch.
 
-https://github.com/user-attachments/assets/777204ca-b129-4ff3-ae9d-c3965941636a
-
-## Funcionalidades
-
-- Criação de QR Codes: Interface intuitiva para criar QR Codes personalizados com informações específicas.
-- Visualização de QR Codes Criados: Após a criação, visualize o QR Code diretamente na aplicação.
-- Persistência de Dados: Utiliza o Context API para gerenciar o estado do QR Code criado.
-
-## Instalação
-
-1. Clone o repositório
-2. Instale as dependências
-
-   ```bat
-   npm install
-   ```
-
-3. Execute o Json Server
-
-   ```bat
-   npm run json-server
-   ```
-
-4. Execute o projeto
-   ```bat
-   npm run start
-   ```
+![Minhas habilidades](https://skillicons.dev/icons?i=ts,react,kotlin,tailwind)

@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres
+    container_name: pontoqr-db
+    environment:
+      POSTGRES_DB: pontoqr
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senha
+    ports:
+      - "5433:5432"
