@@ -1,14 +1,19 @@
-import axios from "axios";
-import { userCreationModel } from "../models/service.models";
+import { userCreationModel, userLoginModel } from "../models/service.models";
+import { axiosInstance, handleAxiosError } from "./helper";
 
-axios.defaults.baseURL = "http://10.0.2.2:8080";
 
 export async function registerUser(user: userCreationModel) {
     try {
-        const response = await axios.post("/api/users", user, {
-            timeout: 5000,
-        });
+        const response = await axiosInstance.post("/api/users", user);
     } catch (error) {
-        throw error;
+        handleAxiosError(error);
+    }
+}
+
+export async function loginUser(user:userLoginModel){
+    try {
+        const response = await axiosInstance.post("/api/login", user)
+    } catch (error) {
+        handleAxiosError(error);
     }
 }

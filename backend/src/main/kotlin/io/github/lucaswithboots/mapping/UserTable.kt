@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 object UserTable: IntIdTable("user"){
     val id_team = reference("id_team", TeamTable).nullable()
     val name = varchar("name", 255)
-    val email = varchar("email", 255)
+    val email = varchar("email", 255).uniqueIndex()
     val password = varchar("password", 255)
     val isBoss = bool("isBoss")
     val date_created = datetime("date_created")

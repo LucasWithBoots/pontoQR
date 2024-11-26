@@ -5,6 +5,7 @@ import MainButtonForms from "@/src/components/main_button_forms";
 import React, { useState } from "react";
 import { registerUser } from "../../service/api/userService";
 import Toast from "@/src/components/toast";
+import { router } from "expo-router";
 
 export default function SignUpScreen() {
     const [name, setName] = useState("");
@@ -40,10 +41,11 @@ export default function SignUpScreen() {
         try {
             await registerUser({ name, email, password, isBoss });
             showToast("User created successfully!", "success");
-        } catch (error) {
-            console.log("testeeee");
-            console.error("Erro ao criar usuário:", error);
-            showToast("Error creating user. Please try again.", "error");
+            setTimeout(() => {
+                router.replace("./home");
+            }, 3000);
+        } catch (error: any) {
+            showToast(error.message, "error");
         } finally {
             setIsLoading(false);
         }
@@ -100,7 +102,7 @@ export default function SignUpScreen() {
                 message="Creating user..."
                 situation="none"
                 visible={isLoading}
-                onClose={() =>{}}
+                onClose={() => {}}
             />
             <Toast
                 message={toastMessage}

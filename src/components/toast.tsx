@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { View, Text, Animated } from "react-native";
 
-type Situation = "success" | "error" | "warning" | "none";
-
 export default function Toast({
     message,
     situation,
@@ -10,7 +8,7 @@ export default function Toast({
     onClose,
 }: {
     message: string;
-    situation: Situation;
+    situation: "success" | "error" | "warning" | "none";
     visible: boolean;
     onClose: () => void;
 }) {
@@ -51,10 +49,10 @@ export default function Toast({
         color = "rgba(112, 208, 83, 0.4)";
     } else if (situation === "error") {
         color = "rgba(255, 0, 4, 0.4)";
-    } else if (situation == "warning"){
+    } else if (situation == "warning") {
         color = "rgba(234, 240, 65, 0.4)";
     } else if (situation == "none") {
-        color = "rgba(44, 44, 44, 0.42)"
+        color = "rgba(44, 44, 44, 0.42)";
     }
 
     return (

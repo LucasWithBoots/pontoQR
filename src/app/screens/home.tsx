@@ -14,14 +14,14 @@ export default function HomeScreen() {
             <View className="gap-8">
                 <ScrollView horizontal={true} style={{ paddingVertical: 10 }}>
                     <MainButtonFastActions
-                        text={"New Team"}
-                        color={"#6E44FF"}
-                        href={""}
-                    />
-                    <MainButtonFastActions
                         text={"New QRCode"}
                         color={"#B892FF"}
                         href={"./only_boss/newqrcode"}
+                    />
+                    <MainButtonFastActions
+                        text={"New Team"}
+                        color={"#6E44FF"}
+                        href={"./login"}
                     />
                     <MainButtonFastActions
                         text={"Manage QRCodes"}

@@ -4,6 +4,7 @@ import com.example.mapping.UserTable
 import com.example.mapping.mapRowToModel
 import com.example.model.User
 import io.github.lucaswithboots.plugins.suspendTransaction
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 
@@ -34,5 +35,12 @@ class PostgresUserRepository: UserRepository {
 
     override suspend fun removeUserById(id: Int): Boolean {
         TODO("Not yet implemented")
+    }
+
+    override suspend fun userByEmail(email: String): User? = suspendTransaction{
+       UserTable.selectAll()
+           .where { UserTable.email eq email }
+           .map(::mapRowToModel)
+           .singleOrNull()
     }
 }

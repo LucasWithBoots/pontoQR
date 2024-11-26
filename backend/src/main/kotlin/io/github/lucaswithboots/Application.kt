@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
 fun Application.module() {
     configureSerialization(PostgresUserRepository())
     configureHTTP()
-    configureSecurity()
+    configureSecurity(PostgresUserRepository())
 
     configureDatabases(environment.config)
 }

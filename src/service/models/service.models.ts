@@ -4,3 +4,8 @@ export interface userCreationModel {
     password: string;
     isBoss: boolean;
 }
+
+export interface userLoginModel {
+    email: string;
+    password: string;
+}
