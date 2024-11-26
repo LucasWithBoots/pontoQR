@@ -8,6 +8,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 object QrCodeTable: IntIdTable("qrcode"){
     val id_creator = reference("id_creator", UserTable)
     val id_team = reference("id_team", TeamTable)
+    val payload = uuid("payload")
     val title = varchar("title", 255)
     val description = varchar("description", 255)
     val date_created = datetime("date_created")
@@ -18,6 +19,7 @@ fun mapRowToQrCode(row: ResultRow) = QrCode(
     id = row[QrCodeTable.id].value,
     id_creator = row[QrCodeTable.id_creator].value,
     id_team = row[QrCodeTable.id_team].value,
+    payload = row[QrCodeTable.payload],
     title = row[QrCodeTable.title],
     description = row[QrCodeTable.description],
     date_created = row[QrCodeTable.date_created],
