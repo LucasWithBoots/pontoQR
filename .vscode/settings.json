@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "node_modules": true,
+        "babel.config.js": true,
+        "expo-env.d.ts": true,
+        "LICENSE": true,
+        "nativewind-env.d.ts": true,
+        "metro.config.js": true,
+        ".idea": true,
+        ".expo": true
+    }
+}
