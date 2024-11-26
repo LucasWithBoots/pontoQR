@@ -35,7 +35,7 @@ export default function LoginScreen() {
 
         setIsLoading(true);
 
-        try{
+        try {
             await loginUser({ email, password });
             showToast("User logged in successfully!", "success");
             setTimeout(() => {

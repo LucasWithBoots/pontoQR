@@ -6,19 +6,19 @@ export const axiosInstance = axios.create({
 });
 
 export function handleAxiosError(error: any): never {
-    if(axios.isAxiosError(error)){
-        if(error.response){
+    if (axios.isAxiosError(error)) {
+        if (error.response) {
             const status = error.response.status;
-            switch (status){
+            switch (status) {
                 case 401:
-                    throw new Error("Incorrect authentication credentials.")
+                    throw new Error("Incorrect authentication credentials.");
                 default:
-                    throw new Error(`Error: ${status}. Please try again.`)
+                    throw new Error(`Error: ${status}. Please try again.`);
             }
         } else {
-            throw new Error("Network error. Please check your connection.")
+            throw new Error("Network error. Please check your connection.");
         }
     } else {
-        throw new Error("An unexpected error occurred. Please try again.")
+        throw new Error("An unexpected error occurred. Please try again.");
     }
 }
