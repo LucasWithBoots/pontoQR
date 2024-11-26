@@ -11,7 +11,7 @@ export default function Header({
 }) {
     return (
         <View
-            className="bg-ebony flex-col justify-end rounded-2xl pb-7 pl-7"
+            className="bg-ebony flex-col justify-end rounded-2xl pb-7 pl-7 mb-4"
             style={{ height: height }}
         >
             <Text

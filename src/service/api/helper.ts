@@ -1,7 +1,11 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-    baseURL: "http://192.168.230.152:8080",
+    // Android Studio Emulator
+    baseURL: "http://10.0.2.2:8080",
+
+    // Expo Go
+    // baseURL: "http://YOURIP:8080",
     timeout: 5000,
 });
 
