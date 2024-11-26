@@ -1,4 +1,5 @@
-![](assets\images\logo_project.png)
+
+![Frame 27](https://github.com/user-attachments/assets/25619d0b-f474-4d4e-b79a-a1a1546e1834)
 
 > 📘 Info
 >
