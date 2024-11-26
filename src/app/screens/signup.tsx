@@ -31,7 +31,7 @@ export default function SignUpScreen() {
 
     const handleSubmit = async () => {
         if (!name.trim() || !email.trim() || !password.trim()) {
-            showToast("Por favor, preencha todos os campos.", "warning");
+            showToast("Please fill in all fields.", "warning");
             return;
         }
 
@@ -98,7 +98,7 @@ export default function SignUpScreen() {
             </View>
             <Toast
                 message="Creating user..."
-                situation="success"
+                situation="none"
                 visible={isLoading}
                 onClose={() =>{}}
             />
