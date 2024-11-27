@@ -3,15 +3,10 @@ import Header from "@/src/components/header";
 import MainButtonFastActions from "@/src/components/main_button_fast_actions";
 import TeamListHome from "@/src/components/team_list_home";
 import { useContext } from "react";
-import { UserContext } from "@/src/contexts/UserContext";
+import { UserContext, useUser } from "@/src/contexts/UserContext";
 
 export default function HomeScreen() {
-    const userContext = useContext(UserContext);
-
-    if (!userContext) {
-        return null;
-    }
-    const { user, setUser, loading } = userContext;
+    const { user, setUser, loading } = useUser();
 
     return (
         <View>
