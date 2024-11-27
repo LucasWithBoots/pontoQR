@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT
 import com.example.mapping.UserTable
 import com.example.mapping.mapRowToUser
 import com.example.model.User
+import io.github.lucaswithboots.plugins.hashPassword
 import io.github.lucaswithboots.plugins.suspendTransaction
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.exposed.sql.insert
@@ -27,7 +28,7 @@ class PostgresUserRepository: UserRepository {
             it[id_team] = user.id_team
             it[name] = user.name
             it[email] = user.email
-            it[password] = user.password
+            it[password] = user.password.hashPassword()
             it[isBoss] = user.isBoss
             it[date_created] = user.date_created
             it[active] = user.active

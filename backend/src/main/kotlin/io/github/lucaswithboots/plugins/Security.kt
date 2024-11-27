@@ -42,7 +42,7 @@ fun Application.configureSecurity(userRepository: UserRepository) {
             val (email, password) = call.receive<UserLogin>()
             val user = userRepository.userByEmail(email);
 
-            if(user?.password == password){
+            if(password.verifyPassword(user!!.password)){
                 val token = JWT.create()
                     .withAudience(jwtAudience)
                     .withIssuer(jwtIssuer)

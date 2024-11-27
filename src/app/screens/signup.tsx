@@ -40,9 +40,12 @@ export default function SignUpScreen() {
 
         try {
             await registerUser({ name, email, password, isBoss });
-            showToast("User created successfully!", "success");
+            showToast(
+                "User created successfully! You can now login.",
+                "success",
+            );
             setTimeout(() => {
-                router.replace("./home");
+                router.replace("./login");
             }, 3000);
         } catch (error: any) {
             showToast(error.message, "error");

@@ -22,6 +22,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:0.56.0")
     implementation("org.jetbrains.exposed:exposed-kotlin-datetime:0.56.0")
+    implementation("at.favre.lib:bcrypt:0.10.2")
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.server.content.negotiation)
