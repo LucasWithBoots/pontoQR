@@ -40,9 +40,9 @@ fun Application.configureSecurity(userRepository: UserRepository) {
     routing {
         post("/api/login"){
             val (email, password) = call.receive<UserLogin>()
-            val user = userRepository.userByEmail(email);
+            val user = userRepository.userByEmail(email) ?: return@post call.respond(HttpStatusCode.Unauthorized);
 
-            if(password.verifyPassword(user!!.password)){
+            if(password.verifyPassword(user.password)){
                 val token = JWT.create()
                     .withAudience(jwtAudience)
                     .withIssuer(jwtIssuer)

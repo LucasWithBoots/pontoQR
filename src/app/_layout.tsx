@@ -4,6 +4,7 @@ import * as NavigationBar from "expo-navigation-bar";
 import { Colors } from "@/src/style/theme";
 import { useFonts } from "expo-font";
 import ContextUserProvider from "../contexts/UserContext";
+import ToastProvider from "../contexts/ToasterContext";
 
 export default function RootLayout() {
     NavigationBar.setBackgroundColorAsync(Colors.vulcan);
@@ -26,13 +27,15 @@ export default function RootLayout() {
     }
 
     return (
-        <ContextUserProvider>
-            <Stack
-                screenOptions={{
-                    contentStyle: { backgroundColor: "#131521" },
-                    headerShown: false,
-                }}
-            ></Stack>
-        </ContextUserProvider>
+        <ToastProvider>
+            <ContextUserProvider>
+                <Stack
+                    screenOptions={{
+                        contentStyle: { backgroundColor: "#131521" },
+                        headerShown: false,
+                    }}
+                ></Stack>
+            </ContextUserProvider>
+        </ToastProvider>
     );
 }
