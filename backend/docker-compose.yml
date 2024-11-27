@@ -1,5 +1,5 @@
 services:
-  db:
+  db_pontoqr:
     image: postgres
     container_name: pontoqr-db
     environment:
