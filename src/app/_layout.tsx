@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import * as NavigationBar from "expo-navigation-bar";
 import { Colors } from "@/src/style/theme";
 import { useFonts } from "expo-font";
+import ContextUserProvider from "../contexts/UserContext";
 
 export default function RootLayout() {
     NavigationBar.setBackgroundColorAsync(Colors.vulcan);
@@ -25,11 +26,13 @@ export default function RootLayout() {
     }
 
     return (
-        <Stack
-            screenOptions={{
-                contentStyle: { backgroundColor: "#131521" },
-                headerShown: false,
-            }}
-        ></Stack>
+        <ContextUserProvider>
+            <Stack
+                screenOptions={{
+                    contentStyle: { backgroundColor: "#131521" },
+                    headerShown: false,
+                }}
+            ></Stack>
+        </ContextUserProvider>
     );
 }

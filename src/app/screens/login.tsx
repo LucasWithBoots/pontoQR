@@ -3,7 +3,7 @@ import TextInputForms from "@/src/components/text_input_forms";
 import MainButtonForms from "@/src/components/main_button_forms";
 import React, { useState } from "react";
 import Toast from "@/src/components/toast";
-import { loginUser } from "@/src/service/api/userService";
+import { getUserData, loginUser } from "@/src/service/api/userService";
 import { router } from "expo-router";
 
 export default function LoginScreen() {

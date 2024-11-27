@@ -2,12 +2,21 @@ import { ScrollView, View } from "react-native";
 import Header from "@/src/components/header";
 import MainButtonFastActions from "@/src/components/main_button_fast_actions";
 import TeamListHome from "@/src/components/team_list_home";
+import { useContext } from "react";
+import { UserContext } from "@/src/contexts/UserContext";
 
 export default function HomeScreen() {
+    const userContext = useContext(UserContext);
+
+    if (!userContext) {
+        return null;
+    }
+    const { user, setUser, loading } = userContext;
+
     return (
         <View>
             <Header
-                title="Hi, Lucas!"
+                title={user!.name}
                 subtitle="Sunday, November 24, 2024"
                 height={250}
             />
