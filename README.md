@@ -17,5 +17,10 @@
 <p float="left" align="middle">
   <img src="./assets/images/screenshots/homescreen.png" width="32%" />
   <img src="./assets/images/screenshots/login.png" width="32%" /> 
+  <img src="./assets/images/screenshots/login_suc.png" width="32%" />
+</p>
+<p float="left" align="middle">
   <img src="./assets/images/screenshots/register.png" width="32%" />
+  <img src="./assets/images/screenshots/homepage.png" width="32%" />
+  <img src="./assets/images/screenshots/qrcode_form.png" width="32%" />
 </p>

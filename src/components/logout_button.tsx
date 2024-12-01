@@ -17,7 +17,7 @@ export default function LogoutButton() {
                     className="text-white text-2xl text-center pt-10"
                     style={{ fontFamily: "SpaceGrotesk-Bold" }}
                 >
-                    Do logout
+                    Logout
                 </Text>
             </View>
         </TouchableOpacity>
