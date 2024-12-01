@@ -1,13 +1,15 @@
 package io.github.lucaswithboots.repositories.qrcode
 
 import com.example.mapping.QrCodeTable
+import com.example.mapping.mapRowToQrCode
 import com.example.model.QrCode
 import io.github.lucaswithboots.plugins.suspendTransaction
 import org.jetbrains.exposed.sql.insertAndGetId
+import org.jetbrains.exposed.sql.selectAll
 
 class PostgresQrCodeRepository : QrCodeRepository {
-    override suspend fun allQrCodes(): List<QrCode> {
-        TODO("Not yet implemented")
+    override suspend fun allQrCodes(): List<QrCode> = suspendTransaction {
+        QrCodeTable.selectAll().map(::mapRowToQrCode)
     }
 
     override suspend fun qrCodeById(id: Int): QrCode? {

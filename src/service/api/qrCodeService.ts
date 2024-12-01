@@ -28,3 +28,12 @@ export async function postQrCode({
         return undefined;
     }
 }
+
+export async function getQrCodes(): Promise<QrCodeResponse[]> {
+    try {
+        const response = await axiosInstance.get("/api/qrcodes");
+        return response.data;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}

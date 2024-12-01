@@ -9,6 +9,12 @@ import io.ktor.server.routing.*
 
 fun Route.qrCodeRoute(qrCodeRepository: QrCodeRepository) {
     route("/api/qrcodes") {
+        get {
+            val qrCodes = qrCodeRepository.allQrCodes()
+            call.respond(qrCodes)
+            return@get
+        }
+
         post {
             val qrcode = call.receive<QrCode>()
             val createdQrCode = qrCodeRepository.addQrCode(qrcode)

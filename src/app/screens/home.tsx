@@ -24,13 +24,13 @@ export default function HomeScreen() {
                         href={"./only_boss/newqrcode"}
                     />
                     <MainButtonFastActions
-                        text={"New Team"}
-                        color={"#6E44FF"}
-                        href={"./login"}
-                    />
-                    <MainButtonFastActions
                         text={"Manage QRCodes"}
                         color={"#003F88"}
+                        href={"./only_boss/manageqrcode"}
+                    />
+                    <MainButtonFastActions
+                        text={"New Team"}
+                        color={"#6E44FF"}
                         href={"./login"}
                     />
                     <MainButtonFastActions

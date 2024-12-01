@@ -27,6 +27,12 @@ export default function Index() {
                 >
                     showqrcode
                 </Link>
+                <Link
+                    className="text-white"
+                    href="/screens/only_boss/manageqrcode"
+                >
+                    manage qr codes
+                </Link>
             </View>
         </>
     );

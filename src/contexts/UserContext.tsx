@@ -29,8 +29,6 @@ export default function ContextUserProvider({
     const [user, setUser] = useState<User>();
 
     useEffect(() => {
-        console.log("User state updated:", user);
-
         const handleUserChange = async () => {
             if (user === undefined) {
                 await logoutUser();
