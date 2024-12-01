@@ -16,3 +16,10 @@ export interface teamModel {
     date_created: string;
     active: boolean;
 }
+
+export interface qrCodeModel {
+    id_creator: string;
+    id_team: string;
+    title: string;
+    description: string;
+}

@@ -28,3 +28,11 @@ export async function getUserData() {
         handleAxiosError(error);
     }
 }
+
+export async function logoutUser() {
+    try {
+        await SecureStore.deleteItemAsync("jwtToken");
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}

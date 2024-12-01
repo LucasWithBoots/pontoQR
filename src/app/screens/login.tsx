@@ -5,9 +5,11 @@ import React, { useEffect, useState } from "react";
 import { getUserData, loginUser } from "@/src/service/api/userService";
 import { router } from "expo-router";
 import { useToaster } from "@/src/contexts/ToasterContext";
+import { useUser } from "@/src/contexts/UserContext";
 
 export default function LoginScreen() {
     const { showToast } = useToaster();
+    const { user, setUser } = useUser();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -31,6 +33,8 @@ export default function LoginScreen() {
         try {
             await loginUser({ email, password });
             showToast("User logged in successfully!", "success");
+            const userDetails = await getUserData();
+            setUser(userDetails);
             setTimeout(() => {
                 router.replace("./home");
             }, 3000);

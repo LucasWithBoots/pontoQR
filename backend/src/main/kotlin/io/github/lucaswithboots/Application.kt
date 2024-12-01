@@ -4,6 +4,7 @@ import io.github.lucaswithboots.plugins.configureDatabases
 import io.github.lucaswithboots.plugins.configureHTTP
 import io.github.lucaswithboots.plugins.configureSecurity
 import io.github.lucaswithboots.plugins.configureSerialization
+import io.github.lucaswithboots.plugins.configureStatusPage
 import io.github.lucaswithboots.repositories.qrcode.PostgresQrCodeRepository
 import io.github.lucaswithboots.repositories.team.PostgresTeamRepository
 import io.github.lucaswithboots.repositories.user.PostgresUserRepository
@@ -21,6 +22,7 @@ fun Application.module() {
     )
     configureHTTP()
     configureSecurity(PostgresUserRepository())
+    configureStatusPage()
 
     configureDatabases(environment.config)
 }

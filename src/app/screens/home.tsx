@@ -4,9 +4,10 @@ import MainButtonFastActions from "@/src/components/main_button_fast_actions";
 import TeamListHome from "@/src/components/team_list_home";
 import { useContext } from "react";
 import { UserContext, useUser } from "@/src/contexts/UserContext";
+import LogoutButton from "@/src/components/logout_button";
 
 export default function HomeScreen() {
-    const { user, setUser, loading } = useUser();
+    const { user } = useUser();
 
     return (
         <View>
@@ -47,6 +48,7 @@ export default function HomeScreen() {
                     <TeamListHome />
                 </View>
             </View>
+            <LogoutButton />
         </View>
     );
 }

@@ -8,18 +8,17 @@ import {
     useState,
 } from "react";
 import { User } from "../models/model.user";
-import { getUserData } from "../service/api/userService";
+import * as SecureStore from "expo-secure-store";
+import { getUserData, logoutUser } from "../service/api/userService";
 
 interface UserContextType {
     user: User | undefined;
-    setUser: any;
-    loading: boolean;
+    setUser: (user: User | undefined) => void;
 }
 
 export const UserContext = createContext<UserContextType>({
     user: undefined,
     setUser: () => {},
-    loading: false,
 });
 
 export default function ContextUserProvider({
@@ -28,25 +27,21 @@ export default function ContextUserProvider({
     children: ReactNode;
 }) {
     const [user, setUser] = useState<User>();
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await getUserData();
-                setUser(response);
-            } catch (error) {
-                console.log(error);
-            } finally {
-                setLoading(false);
+        console.log("User state updated:", user);
+
+        const handleUserChange = async () => {
+            if (user === undefined) {
+                await logoutUser();
             }
         };
 
-        fetchUser();
-    }, []);
+        handleUserChange();
+    }, [user]);
 
     return (
-        <UserContext.Provider value={{ user, setUser, loading }}>
+        <UserContext.Provider value={{ user, setUser }}>
             {children}
         </UserContext.Provider>
     );

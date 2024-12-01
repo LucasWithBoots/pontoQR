@@ -2,6 +2,7 @@ package io.github.lucaswithboots.plugins
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
+import io.github.lucaswithboots.exceptions.UnauthorizedException
 import io.github.lucaswithboots.model.request.UserLogin
 import io.github.lucaswithboots.repositories.user.UserRepository
 import io.ktor.http.*
@@ -40,7 +41,7 @@ fun Application.configureSecurity(userRepository: UserRepository) {
     routing {
         post("/api/login"){
             val (email, password) = call.receive<UserLogin>()
-            val user = userRepository.userByEmail(email) ?: return@post call.respond(HttpStatusCode.Unauthorized);
+            val user = userRepository.userByEmail(email) ?: throw UnauthorizedException("User not found")
 
             if(password.verifyPassword(user.password)){
                 val token = JWT.create()
