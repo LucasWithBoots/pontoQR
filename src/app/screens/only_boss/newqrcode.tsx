@@ -59,45 +59,51 @@ export default function Newqrcode() {
 
         try {
             const user_id = user!!.id.toString();
-            await postQrCode({ user_id, selectedTeam, title, description });
+            const response = await postQrCode({
+                user_id,
+                selectedTeam,
+                title,
+                description,
+            });
             showToast("QRCode created successfully!", "success");
 
             setTimeout(() => {
-                router.replace("./qrcodecreated");
+                router.replace({
+                    pathname: "./qrcode_created/[payload]",
+                    params: { payload: `${response?.payload}` },
+                });
             }, 3000);
         } catch (error: any) {}
     };
 
     return (
-        <>
-            <View>
-                <Header title="Create new QRCode" height={170} />
-                <View className="px-6 gap-5 mb-16">
-                    <DropdownForms
-                        title="Team"
-                        placeholder={
-                            isLoading ? "Loading teams..." : "Select a team"
-                        }
-                        items={dropdownItems}
-                        onSelect={(value) => setSelectedTeam(value)}
-                    />
-                    <TextInputForms
-                        title={"Title"}
-                        placeholder={"Write a title"}
-                        value={title}
-                        onChangeText={setTitle}
-                        isSecure={false}
-                    />
-                    <TextInputForms
-                        title={"Description"}
-                        placeholder={"Write a description"}
-                        value={description}
-                        onChangeText={setDescription}
-                        isSecure={false}
-                    />
-                </View>
-                <MainButtonForms text={"Create"} onPress={handleSubmit} />
+        <View>
+            <Header title="Create new QRCode" height={170} />
+            <View className="px-6 gap-5 mb-16">
+                <DropdownForms
+                    title="Team"
+                    placeholder={
+                        isLoading ? "Loading teams..." : "Select a team"
+                    }
+                    items={dropdownItems}
+                    onSelect={(value) => setSelectedTeam(value)}
+                />
+                <TextInputForms
+                    title={"Title"}
+                    placeholder={"Write a title"}
+                    value={title}
+                    onChangeText={setTitle}
+                    isSecure={false}
+                />
+                <TextInputForms
+                    title={"Description"}
+                    placeholder={"Write a description"}
+                    value={description}
+                    onChangeText={setDescription}
+                    isSecure={false}
+                />
             </View>
-        </>
+            <MainButtonForms text={"Create"} onPress={handleSubmit} />
+        </View>
     );
 }

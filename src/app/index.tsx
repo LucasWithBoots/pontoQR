@@ -21,6 +21,12 @@ export default function Index() {
                 <Link className="text-white" href="/screens/home">
                     home
                 </Link>
+                <Link
+                    className="text-white"
+                    href="/screens/only_boss/qrcodecreated"
+                >
+                    showqrcode
+                </Link>
             </View>
         </>
     );

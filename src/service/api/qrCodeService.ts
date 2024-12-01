@@ -1,5 +1,5 @@
 import { useUser } from "@/src/contexts/UserContext";
-import { qrCodeModel } from "../models/service.models";
+import { qrCodeModel, QrCodeResponse } from "../models/service.models";
 import { axiosInstance, handleAxiosError } from "./helper";
 
 export async function postQrCode({
@@ -12,7 +12,7 @@ export async function postQrCode({
     selectedTeam: string;
     title: string;
     description: string;
-}) {
+}): Promise<QrCodeResponse | undefined> {
     const qrCode: qrCodeModel = {
         id_creator: user_id,
         id_team: selectedTeam,
@@ -22,7 +22,9 @@ export async function postQrCode({
 
     try {
         const response = await axiosInstance.post("/api/qrcodes", qrCode);
+        return response.data;
     } catch (error) {
         handleAxiosError(error);
+        return undefined;
     }
 }

@@ -23,3 +23,14 @@ export interface qrCodeModel {
     title: string;
     description: string;
 }
+
+export interface QrCodeResponse {
+    id: number;
+    id_creator: number;
+    id_team: number;
+    payload: string;
+    title: string;
+    description: string;
+    date_created: string;
+    active: boolean;
+}
