@@ -7,26 +7,21 @@ import { useEffect, useState } from "react";
 import { getTeams } from "@/src/service/api/teamService";
 import Toast from "@/src/components/toast";
 import { teamModel } from "@/src/service/models/service.models";
+import { useToaster } from "@/src/contexts/ToasterContext";
+import { postQrCode } from "@/src/service/api/qrCodeService";
+import { router } from "expo-router";
+import { useUser } from "@/src/contexts/UserContext";
 
 export default function Newqrcode() {
+    const { showToast } = useToaster();
+    const { user } = useUser();
     const [teams, setTeams] = useState<teamModel[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+
     const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
 
-    const [toastVisible, setToastVisible] = useState(false);
-    const [toastMessage, setToastMessage] = useState("");
-    const [toastSituation, setToastSituation] = useState<
-        "success" | "error" | "warning"
-    >("success");
-
-    const showToast = (
-        message: string,
-        situation: "success" | "error" | "warning",
-    ) => {
-        setToastMessage(message);
-        setToastSituation(situation);
-        setToastVisible(true);
-    };
+    const [title, setTitle] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
 
     const loadTeams = async () => {
         try {
@@ -48,6 +43,31 @@ export default function Newqrcode() {
         value: team.id,
     }));
 
+    useEffect(() => {
+        if (isLoading) {
+            showToast("Creating QRCode...", "none");
+        }
+    }, [isLoading]);
+
+    const handleSubmit = async () => {
+        if (selectedTeam == null || description == "" || title == "") {
+            showToast("Please fill in all fields.", "warning");
+            return;
+        }
+
+        setIsLoading(true);
+
+        try {
+            const user_id = user!!.id.toString();
+            await postQrCode({ user_id, selectedTeam, title, description });
+            showToast("QRCode created successfully!", "success");
+
+            setTimeout(() => {
+                router.replace("./qrcodecreated");
+            }, 3000);
+        } catch (error: any) {}
+    };
+
     return (
         <>
             <View>
@@ -62,22 +82,22 @@ export default function Newqrcode() {
                         onSelect={(value) => setSelectedTeam(value)}
                     />
                     <TextInputForms
-                        title={"Location"}
-                        placeholder={"Select a location"}
+                        title={"Title"}
+                        placeholder={"Write a title"}
+                        value={title}
+                        onChangeText={setTitle}
+                        isSecure={false}
                     />
                     <TextInputForms
                         title={"Description"}
                         placeholder={"Write a description"}
+                        value={description}
+                        onChangeText={setDescription}
+                        isSecure={false}
                     />
                 </View>
-                <MainButtonForms text={"Create"} href=".." />
+                <MainButtonForms text={"Create"} onPress={handleSubmit} />
             </View>
-            <Toast
-                message={toastMessage}
-                situation={toastSituation}
-                visible={toastVisible}
-                onClose={() => setToastVisible(false)}
-            />
         </>
     );
 }

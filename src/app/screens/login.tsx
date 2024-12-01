@@ -1,31 +1,26 @@
 import { Text, View } from "react-native";
 import TextInputForms from "@/src/components/text_input_forms";
 import MainButtonForms from "@/src/components/main_button_forms";
-import React, { useState } from "react";
-import Toast from "@/src/components/toast";
-import { loginUser } from "@/src/service/api/userService";
+import React, { useEffect, useState } from "react";
+import { getUserData, loginUser } from "@/src/service/api/userService";
 import { router } from "expo-router";
+import { useToaster } from "@/src/contexts/ToasterContext";
+import { useUser } from "@/src/contexts/UserContext";
 
 export default function LoginScreen() {
+    const { showToast } = useToaster();
+    const { user, setUser } = useUser();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [toastVisible, setToastVisible] = useState(false);
-    const [toastMessage, setToastMessage] = useState("");
-    const [toastSituation, setToastSituation] = useState<
-        "success" | "error" | "warning"
-    >("success");
-
-    const showToast = (
-        message: string,
-        situation: "success" | "error" | "warning",
-    ) => {
-        setToastMessage(message);
-        setToastSituation(situation);
-        setToastVisible(true);
-    };
+    useEffect(() => {
+        if (isLoading) {
+            showToast("Verifying user...", "none");
+        }
+    }, [isLoading]);
 
     const handleSubmmit = async () => {
         if (!email.trim() || !password.trim()) {
@@ -38,6 +33,8 @@ export default function LoginScreen() {
         try {
             await loginUser({ email, password });
             showToast("User logged in successfully!", "success");
+            const userDetails = await getUserData();
+            setUser(userDetails);
             setTimeout(() => {
                 router.replace("./home");
             }, 3000);
@@ -79,18 +76,6 @@ export default function LoginScreen() {
                     onPress={handleSubmmit}
                 />
             </View>
-            <Toast
-                message="Verifying user..."
-                situation="none"
-                visible={isLoading}
-                onClose={() => {}}
-            />
-            <Toast
-                message={toastMessage}
-                situation={toastSituation}
-                visible={toastVisible}
-                onClose={() => setToastVisible(false)}
-            />
         </>
     );
 }

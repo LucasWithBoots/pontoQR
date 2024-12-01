@@ -7,11 +7,29 @@ export default function MainButtonForms({
     onPress,
 }: {
     text: string;
-    href: Href;
+    href?: Href;
     onPress?: () => void;
 }) {
-    return (
-        <Link href={href} asChild>
+    if (href) {
+        return (
+            <Link href={href} asChild>
+                <TouchableOpacity
+                    className="h-14 mx-14 rounded-lg justify-center bg-blue_ribbon"
+                    onPress={onPress}
+                >
+                    <View>
+                        <Text
+                            className="text-white text-2xl text-center"
+                            style={{ fontFamily: "SpaceGrotesk-Medium" }}
+                        >
+                            {text}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            </Link>
+        );
+    } else {
+        return (
             <TouchableOpacity
                 className="h-14 mx-14 rounded-lg justify-center bg-blue_ribbon"
                 onPress={onPress}
@@ -25,6 +43,6 @@ export default function MainButtonForms({
                     </Text>
                 </View>
             </TouchableOpacity>
-        </Link>
-    );
+        );
+    }
 }

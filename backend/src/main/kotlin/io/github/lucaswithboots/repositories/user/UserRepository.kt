@@ -9,4 +9,5 @@ interface UserRepository {
     suspend fun updateUserById(id: Int, user: User)
     suspend fun removeUserById(id: Int): Boolean
     suspend fun userByEmail(email: String): User?
+    suspend fun userByToken(token: String): User?
 }

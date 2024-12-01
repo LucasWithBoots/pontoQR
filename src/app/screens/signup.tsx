@@ -2,12 +2,14 @@ import { Text, View } from "react-native";
 import TextInputForms from "@/src/components/text_input_forms";
 import RadioInputForms from "@/src/components/radio_input_forms";
 import MainButtonForms from "@/src/components/main_button_forms";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { registerUser } from "../../service/api/userService";
-import Toast from "@/src/components/toast";
 import { router } from "expo-router";
+import { useToaster } from "@/src/contexts/ToasterContext";
 
 export default function SignUpScreen() {
+    const { showToast } = useToaster();
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,20 +17,11 @@ export default function SignUpScreen() {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const [toastVisible, setToastVisible] = useState(false);
-    const [toastMessage, setToastMessage] = useState("");
-    const [toastSituation, setToastSituation] = useState<
-        "success" | "error" | "warning"
-    >("success");
-
-    const showToast = (
-        message: string,
-        situation: "success" | "error" | "warning",
-    ) => {
-        setToastMessage(message);
-        setToastSituation(situation);
-        setToastVisible(true);
-    };
+    useEffect(() => {
+        if (isLoading) {
+            showToast("Creating user...", "none");
+        }
+    }, [isLoading]);
 
     const handleSubmit = async () => {
         if (!name.trim() || !email.trim() || !password.trim()) {
@@ -40,9 +33,12 @@ export default function SignUpScreen() {
 
         try {
             await registerUser({ name, email, password, isBoss });
-            showToast("User created successfully!", "success");
+            showToast(
+                "User created successfully! You can now login.",
+                "success",
+            );
             setTimeout(() => {
-                router.replace("./home");
+                router.replace("./login");
             }, 3000);
         } catch (error: any) {
             showToast(error.message, "error");
@@ -98,18 +94,6 @@ export default function SignUpScreen() {
                     onPress={handleSubmit}
                 />
             </View>
-            <Toast
-                message="Creating user..."
-                situation="none"
-                visible={isLoading}
-                onClose={() => {}}
-            />
-            <Toast
-                message={toastMessage}
-                situation={toastSituation}
-                visible={toastVisible}
-                onClose={() => setToastVisible(false)}
-            />
         </>
     );
 }

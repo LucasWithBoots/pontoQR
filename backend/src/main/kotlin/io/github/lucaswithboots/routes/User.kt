@@ -18,6 +18,24 @@ fun Route.userRoute(userRepository: UserRepository) {
             return@get
         }
 
+        get("/me"){
+            val authHeader = call.request.headers["Authorization"]
+
+            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                call.respond(HttpStatusCode.Unauthorized, "Token não fornecido ou inválido")
+                return@get
+            }
+
+            val token = authHeader.removePrefix("Bearer ")
+            val user = userRepository.userByToken(token)
+
+            if (user != null) {
+                call.respond(user)
+            } else {
+                call.respond(HttpStatusCode.NotFound, "Usuário não encontrado")
+            }
+        }
+
         post {
             val user = call.receive<User>()
             userRepository.addUser(user)
