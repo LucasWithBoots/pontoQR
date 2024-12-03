@@ -8,8 +8,7 @@ import {
     useState,
 } from "react";
 import { User } from "../models/model.user";
-import * as SecureStore from "expo-secure-store";
-import { getUserData, logoutUser } from "../service/api/userService";
+import { logoutUser } from "../service/api/userService";
 
 interface UserContextType {
     user: User | undefined;

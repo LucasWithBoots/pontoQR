@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as SecureStore from "expo-secure-store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const axiosInstance = axios.create({
     // Android Studio Emulator
@@ -12,7 +12,8 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
     async (config) => {
-        const token = await SecureStore.getItemAsync("jwtToken");
+        const token = await AsyncStorage.getItem("jwtToken");
+        console.log(`TOKEN NO AXIOS: ${token}`);
 
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;

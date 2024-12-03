@@ -4,10 +4,10 @@ import { Image, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import MainButtonForms from "@/src/components/main_button_forms";
 import { Link, router } from "expo-router";
-import * as SecureStore from "expo-secure-store";
 import { getUserData } from "../service/api/userService";
 import { useUser } from "../contexts/UserContext";
 import { useToaster } from "../contexts/ToasterContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Index() {
     const { user, setUser } = useUser();
@@ -15,7 +15,7 @@ export default function Index() {
 
     useEffect(() => {
         const checkAuth = async () => {
-            const token = await SecureStore.getItemAsync("jwtToken");
+            const token = await AsyncStorage.getItem("jwtToken");
 
             if (token != null) {
                 try {

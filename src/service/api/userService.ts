@@ -1,6 +1,6 @@
 import { userCreationModel, userLoginModel } from "../models/service.models";
 import { axiosInstance, handleAxiosError } from "./helper";
-import * as SecureStore from "expo-secure-store";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function registerUser(user: userCreationModel) {
     try {
@@ -13,7 +13,7 @@ export async function registerUser(user: userCreationModel) {
 export async function loginUser(user: userLoginModel) {
     try {
         const response = await axiosInstance.post("/api/login", user);
-        await SecureStore.setItemAsync("jwtToken", response.data.token);
+        await AsyncStorage.setItem("jwtToken", response.data.token);
         console.log("Token salvo:", response.data.token);
     } catch (error) {
         handleAxiosError(error);
@@ -35,7 +35,7 @@ export async function getUserData(token?: string) {
 
 export async function logoutUser() {
     try {
-        await SecureStore.deleteItemAsync("jwtToken");
+        await AsyncStorage.removeItem("jwtToken");
     } catch (error) {
         handleAxiosError(error);
     }
