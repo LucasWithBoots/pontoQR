@@ -6,7 +6,7 @@ export default function LogoutButton() {
     const { user, setUser } = useUser();
 
     const makeLogout = () => {
-        router.replace("./start");
+        router.replace("./index");
         setUser(undefined);
     };
 

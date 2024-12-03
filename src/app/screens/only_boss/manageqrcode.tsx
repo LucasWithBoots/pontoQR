@@ -11,6 +11,7 @@ import {
 } from "@/src/service/models/service.models";
 import { useEffect, useState } from "react";
 import { View, Text, FlatList, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Manageqrcode() {
     const [teams, setTeams] = useState<teamModel[]>([]);
@@ -49,24 +50,20 @@ export default function Manageqrcode() {
         value: team.id,
     }));
 
-    const renderDropdownTeams = () => {
-        return (
-            <DropdownForms
-                title="Team"
-                placeholder={isLoading ? "Loading teams..." : "Select a team"}
-                items={dropdownItems}
-                onSelect={(value) => setSelectedTeam(value)}
-            />
-        );
-    };
-
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Header title="Manage QRCodes" height={170} />
-            <ScrollView>
-                <View className="px-6 gap-5 mb-16">
+            <View style={{ flex: 1 }} className="px-6 gap-5 mb-16">
+                <DropdownForms
+                    title="Team"
+                    placeholder={
+                        isLoading ? "Loading teams..." : "Select a team"
+                    }
+                    items={dropdownItems}
+                    onSelect={(value) => setSelectedTeam(value)}
+                />
+                <View className="gap-5 mb-16">
                     <FlatList
-                        ListHeaderComponent={renderDropdownTeams}
                         data={qrCodes}
                         renderItem={({ item }) => (
                             <InfoQrCode
@@ -77,10 +74,9 @@ export default function Manageqrcode() {
                                 payload={item.payload}
                             />
                         )}
-                        contentContainerStyle={{ paddingBottom: 170 }}
                     />
                 </View>
-            </ScrollView>
+            </View>
         </View>
     );
 }

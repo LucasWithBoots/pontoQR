@@ -20,9 +20,13 @@ export async function loginUser(user: userLoginModel) {
     }
 }
 
-export async function getUserData() {
+export async function getUserData(token?: string) {
     try {
-        const response = await axiosInstance.get("/api/users/me");
+        const response = await axiosInstance.get("/api/users/me", {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
         return response.data;
     } catch (error) {
         handleAxiosError(error);

@@ -5,6 +5,7 @@ import { Colors } from "@/src/style/theme";
 import { useFonts } from "expo-font";
 import ContextUserProvider from "../contexts/UserContext";
 import ToastProvider from "../contexts/ToasterContext";
+import { StatusBar } from "expo-status-bar";
 
 export default function RootLayout() {
     NavigationBar.setBackgroundColorAsync(Colors.vulcan);
@@ -27,15 +28,18 @@ export default function RootLayout() {
     }
 
     return (
-        <ToastProvider>
-            <ContextUserProvider>
-                <Stack
-                    screenOptions={{
-                        contentStyle: { backgroundColor: "#131521" },
-                        headerShown: false,
-                    }}
-                ></Stack>
-            </ContextUserProvider>
-        </ToastProvider>
+        <>
+            <StatusBar backgroundColor="transparent" translucent={true} />
+            <ToastProvider>
+                <ContextUserProvider>
+                    <Stack
+                        screenOptions={{
+                            contentStyle: { backgroundColor: "#131521" },
+                            headerShown: false,
+                        }}
+                    ></Stack>
+                </ContextUserProvider>
+            </ToastProvider>
+        </>
     );
 }

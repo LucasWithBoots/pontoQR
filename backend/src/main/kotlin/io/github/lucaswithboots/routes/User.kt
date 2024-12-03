@@ -2,13 +2,11 @@ package io.github.lucaswithboots.routes
 
 import com.example.model.User
 import io.github.lucaswithboots.repositories.user.UserRepository
-import io.ktor.http.HttpStatusCode
-import io.ktor.server.request.receive
-import io.ktor.server.response.respond
-import io.ktor.server.routing.Route
-import io.ktor.server.routing.get
-import io.ktor.server.routing.post
-import io.ktor.server.routing.route
+import io.ktor.http.*
+import io.ktor.server.auth.*
+import io.ktor.server.request.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 
 fun Route.userRoute(userRepository: UserRepository) {
     route("/api/users") {
@@ -18,21 +16,23 @@ fun Route.userRoute(userRepository: UserRepository) {
             return@get
         }
 
-        get("/me"){
-            val authHeader = call.request.headers["Authorization"]
+        authenticate("auth-jwt") {
+            get("/me") {
+                val authHeader = call.request.headers["Authorization"]
 
-            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-                call.respond(HttpStatusCode.Unauthorized, "Token não fornecido ou inválido")
-                return@get
-            }
+                if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+                    call.respond(HttpStatusCode.Unauthorized, "Token não fornecido ou inválido")
+                    return@get
+                }
 
-            val token = authHeader.removePrefix("Bearer ")
-            val user = userRepository.userByToken(token)
+                val token = authHeader.removePrefix("Bearer ")
+                val user = userRepository.userByToken(token)
 
-            if (user != null) {
-                call.respond(user)
-            } else {
-                call.respond(HttpStatusCode.NotFound, "Usuário não encontrado")
+                if (user != null) {
+                    call.respond(user)
+                } else {
+                    call.respond(HttpStatusCode.NotFound, "Usuário não encontrado")
+                }
             }
         }
 
@@ -42,5 +42,6 @@ fun Route.userRoute(userRepository: UserRepository) {
             call.respond(HttpStatusCode.OK)
         }
     }
+
 }
 

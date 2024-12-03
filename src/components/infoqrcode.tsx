@@ -21,7 +21,7 @@ export default function InfoQrCode({
                 backgroundColor: Colors.shark,
                 flexDirection: "row",
             }}
-            className="rounded-xl px-10 py-8"
+            className="rounded-xl px-10 py-8 mb-5"
         >
             <View
                 className="bg-white rounded-xl aspect-square justify-center items-center"
